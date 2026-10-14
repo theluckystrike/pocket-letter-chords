@@ -1,0 +1,23 @@
+.pocket-letter-chords-dictionary textarea {
+ width: 100%;
+ min-height: 180px;
+ font-family: var(--font-monospace);
+}
+
+.pocket-letter-chords-rows {
+ flex-direction: column;
+ align-items: stretch;
+ gap: 12px;
+}
+
+.pocket-letter-chords-rows .setting-item-control {
+ width: 100%;
+}
+
+.pocket-letter-chords-error {
+ color: var(--text-error);
+}
+
+.pocket-letter-chords-file {
+ display: none;
+}
