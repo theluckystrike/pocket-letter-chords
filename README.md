@@ -10,7 +10,7 @@ The keys must overlap. Typing q, releasing it, then typing w leaves `qw` in the 
 
 ### Save two-letter chords
 
-The free default dictionary holds two-letter chords and static text values. Use different lowercase ASCII letters from a to z. `qw`, `wq` and `q+w` refer to the same pair. A value can include a newline or Unicode text. The letters in the chord itself must be ASCII.
+The free default dictionary holds two-letter chords and static text values. Use different lowercase ASCII letters from a to z. `qw`, `wq` and `q+w` refer to the same pair. A value can include a newline or Unicode text.
 
 Open the dictionary command and edit the JSON list. Select Save to keep the changes. An invalid row shows a message and leaves the saved dictionary unchanged. An empty list removes the default chords.
 
@@ -34,7 +34,7 @@ The tool does not search your note for letters to remove. It prevents the editor
 
 ### Pause and resume
 
-Use “Pause or resume chord input” from the command palette. While paused, keyboard input goes through the editor. The pause state and dictionary are saved in the vault plugin data. A reload keeps them. Resume when you need the saved phrases again.
+Use “Pause or resume chord input” from the command palette. While paused, keyboard input goes through the editor. A reload keeps the pause state and dictionary. Resume when you need the saved phrases again.
 
 The settings tab also has a pause toggle. The command has no default hotkey. You can assign a hotkey in Obsidian if your keyboard has a suitable key combination.
 
@@ -81,6 +81,8 @@ Test a new pair in a sample note before you use it in normal writing. For a mult
 
 ## Settings
 
+After a minor or major update, this plugin opens one What's new tab in the background. The tab and settings card suggest other NoteMods plugins and Zovo Chat and link to notemods.com for feedback ([privacy](https://notemods.com/privacy/)). The tab sends no data. Turn the tab off in Settings.
+
 Pause chord input controls the input handler. Default dictionary opens the free dictionary editor. Folder dictionaries shows saved folder sets. Its buttons work only with Pro. The GitHub account controls sign in, refresh and sign out.
 
 The window is fixed at 80 ms. There is no delay slider. Name and Note folder apply to a folder dictionary. Remove deletes that folder set. Import changes the draft; Save commits it. Closing the modal without Save leaves the saved data unchanged.
@@ -95,7 +97,7 @@ Pro checks used test answers. Live GitHub sign-in and payments were not tested. 
 
 ### Why did normal typing insert a phrase?
 
-The letters overlapped within the chord window. Use a rare pair or pause chord input. Sequential presses do not trigger a chord when the first letter is released before the second starts.
+The letters overlapped within the chord window.
 
 ### Where are the dictionaries saved?
 

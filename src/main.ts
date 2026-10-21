@@ -5,6 +5,8 @@ import { ChordEngine, chooseDictionary, normalizeSettings, type ChordSettings } 
 import { SPONSORS, bindPro, isPro, resetPro } from './pro';
 import { PocketLetterChordsSettingTab } from './settings';
 import { DictionaryModal } from './modal';
+import { setupHello } from './hello/index';
+import WHATS_NEW from './whats-new.json';
 
 /** CodeMirror Vim sets cm-vimMode on the editor scroller outside insert mode. Letters there are commands, not text. */
 function inVimCommandMode(e: KeyboardEvent): boolean {
@@ -21,6 +23,8 @@ export default class PocketLetterChordsPlugin extends Plugin {
  private composing = false;
  private tab: PocketLetterChordsSettingTab | null = null;
  async onload(): Promise<void> {
+  // First: "What's new" reads its state before the settings load (packages/hello). It does not wait.
+  setupHello(this, WHATS_NEW);
   await this.loadSettings();
   const pro = createGitHubSponsors(this.app, this.manifest.id, SPONSORS, this);
   this.pro = pro;
