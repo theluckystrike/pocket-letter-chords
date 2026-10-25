@@ -1,5 +1,6 @@
 {
 	"name": "pocket-letter-chords",
+	"repository": {"type": "git", "url": "theluckystrike/pocket-letter-chords.git"},
 	"version": "1.1.0",
 	"private": true,
 	"description": "Insert saved text with simultaneous letter keys on a physical keyboard.",
