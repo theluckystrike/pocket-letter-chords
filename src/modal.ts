@@ -1,6 +1,6 @@
 import { Modal, Notice, Setting, normalizePath } from 'obsidian';
 import { checkFolder, exportDictionary, parseDictionary, validateBindings, type Binding } from './chords';
-import { isPro } from './pro';
+import { FILES_LEAD, isPro, proNotice, THREE_LEAD } from './pro';
 import type PocketLetterChordsPlugin from './main';
 export class DictionaryModal extends Modal {
  constructor(readonly plugin: PocketLetterChordsPlugin, readonly index: number) { super(plugin.app); }
@@ -26,7 +26,7 @@ export class DictionaryModal extends Modal {
   const read = (): Binding[] => {
    const parsed: unknown = JSON.parse(rows);
    const bindings = validateBindings(parsed);
-   if (!isPro() && bindings.some(b => b.keys.length === 3)) throw new Error('Three-letter chords need Pro.');
+   if (!isPro() && bindings.some(b => b.keys.length === 3)) throw new Error(THREE_LEAD);
    return bindings;
   };
   new Setting(el).setName('Save dictionary').addButton(b => b.setButtonText('Save').setCta().onClick(async () => {
@@ -40,7 +40,11 @@ export class DictionaryModal extends Modal {
     const dictionary = { name: this.index === 0 ? 'Default' : name.trim(), folder: this.index === 0 ? '' : path, bindings };
     if (this.index < 0) this.plugin.settings.dictionaries.push(dictionary); else this.plugin.settings.dictionaries[this.index] = dictionary;
     await this.plugin.saveSettings(); this.close(); new Notice('Dictionary saved.');
-   } catch (e) { error.setText(e instanceof Error ? e.message : String(e)); }
+   } catch (e) {
+    error.setText(e instanceof Error ? e.message : String(e));
+    // A free user who saves a three-letter chord also gets the Pro notice with the next step.
+    if (e instanceof Error && e.message === THREE_LEAD && !isPro()) proNotice(THREE_LEAD);
+   }
   }));
   if (this.index > 0) new Setting(el).setName('Remove folder dictionary').addButton(b => b.setButtonText('Remove').setDisabled(!isPro()).onClick(async () => {
    if (!isPro()) return;
@@ -48,8 +52,8 @@ export class DictionaryModal extends Modal {
   }));
   const fileHeading = 'Dictionary files (Pro)';
   new Setting(el).setName(fileHeading).setHeading();
-  new Setting(el).setName('Import JSON file').setDesc('Import replaces the draft. Select save to keep it.').addButton(b => b.setButtonText('Import file').setDisabled(!isPro()).onClick(() => {
-   if (!isPro()) return;
+  new Setting(el).setName('Import JSON file').setDesc('Import replaces the draft. Select save to keep it.').addButton(b => b.setButtonText('Import file').onClick(() => {
+   if (!isPro()) { proNotice(FILES_LEAD); return; }
    const input = el.createEl('input', { type: 'file', cls: 'pocket-letter-chords-file' }); input.accept = '.json,application/json';
    input.addEventListener('change', () => {
     const file = input.files?.[0]; if (!file) return;
@@ -60,8 +64,8 @@ export class DictionaryModal extends Modal {
     }).catch((e: unknown) => error.setText(e instanceof Error ? e.message : String(e))).finally(() => input.remove());
    }, { once: true }); input.click();
   }));
-  new Setting(el).setName('Export JSON file').setDesc('Save the current draft as a local dictionary file.').addButton(b => b.setButtonText('Export file').setDisabled(!isPro()).onClick(() => {
-   if (!isPro()) return;
+  new Setting(el).setName('Export JSON file').setDesc('Save the current draft as a local dictionary file.').addButton(b => b.setButtonText('Export file').onClick(() => {
+   if (!isPro()) { proNotice(FILES_LEAD); return; }
    try {
     const url = URL.createObjectURL(new Blob([exportDictionary(read())], { type: 'application/json' }));
     const link = el.createEl('a', { attr: { href: url, download: 'pocket-letter-chords.json' } }); link.click(); link.remove();

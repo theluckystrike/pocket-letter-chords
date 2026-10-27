@@ -1,5 +1,11 @@
 # pocket-letter-chords
 
+## 1.1.1
+
+### Patch Changes
+
+- 2a5d530: Add dictionary, Edit dictionary of a folder dictionary, Import file and Export file can now be selected without Pro. They and a save of a three-letter chord show how to get Pro, with a Sponsor on GitHub button. Nothing opens or saves.
+
 ## 1.1.0
 
 ### Minor Changes

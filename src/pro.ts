@@ -1,6 +1,7 @@
 // Pro through GitHub Sponsors (packages/license, github.ts). product.yaml pro: holds the same values; fx check compares them.
 // Every Pro check in the plugin calls isPro(); views redraw through onProChange(). main.ts binds the manager in onload.
 import type { SponsorsConfig, SponsorsManager } from './license/index';
+import { showProNotice } from './license/github-obsidian';
 
 export const SPONSORS: SponsorsConfig = {
 	// Public client id of the seller's OAuth App (device flow on, no client secret anywhere).
@@ -53,4 +54,16 @@ export function resetPro(): void {
 	unbind = null;
 	manager = null;
 	listeners.clear();
+}
+
+/** Lead of the Pro notice for Add dictionary and Edit dictionary of a folder dictionary. */
+export const FOLDER_LEAD = 'Folder dictionaries need Pro.';
+/** Lead of the Pro notice for Import file and Export file. */
+export const FILES_LEAD = 'Dictionary files need Pro.';
+/** Lead of the Pro notice when a free user saves a three-letter chord. Also the error text of the window. */
+export const THREE_LEAD = 'Three-letter chords need Pro.';
+
+/** Shows the shared Pro notice: the lead, then the next step for this user. A free user gets a Sponsor on GitHub button. */
+export function proNotice(lead: string): void {
+	showProNotice(manager, lead);
 }

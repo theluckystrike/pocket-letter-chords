@@ -1,9 +1,9 @@
 {
 	"id": "pocket-letter-chords",
 	"name": "Pocket Letter Chords",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"changes": [
-		"New Send feedback command. It opens a page where you can report a problem or suggest an idea."
+		"Add dictionary, Edit dictionary of a folder dictionary, Import file and Export file can now be selected without Pro. They and a save of a three-letter chord show how to get Pro, with a Sponsor on GitHub button. Nothing opens or saves."
 	],
 	"tip": "Hold the first chord letter and press the second within 80 ms to insert the saved text.",
 	"thanks": "Hi, I am Michael, a solo developer in Poland. Pocket Letter Chords is one of over 100 small plugins that I make. Thank you for keeping it in your editor.",

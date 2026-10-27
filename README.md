@@ -83,7 +83,7 @@ Test a new pair in a sample note before you use it in normal writing. For a mult
 
 After a minor or major update, this plugin opens one What's new tab in the background. The tab and settings card suggest other NoteMods plugins and Zovo Chat and link to notemods.com for feedback ([privacy](https://notemods.com/privacy/)). The tab sends no data. Turn the tab off in Settings.
 
-Pause chord input controls the input handler. Default dictionary opens the free dictionary editor. Folder dictionaries shows saved folder sets. Its buttons work only with Pro. The GitHub account controls sign in, refresh and sign out.
+Pause chord input controls the input handler. Default dictionary opens the free dictionary editor. Folder dictionaries shows saved folder sets. Without Pro, its buttons and the file buttons show a Sponsor notice. The GitHub account controls sign in, refresh and sign out.
 
 The window is fixed at 80 ms. There is no delay slider. Name and Note folder apply to a folder dictionary. Remove deletes that folder set. Import changes the draft; Save commits it. Closing the modal without Save leaves the saved data unchanged.
 
