@@ -83,7 +83,7 @@ Test a new pair in a sample note before you use it in normal writing. For a mult
 
 After a minor or major update, this plugin opens one What's new tab in the background. The tab and settings card suggest other NoteMods plugins and Zovo Chat and link to notemods.com for feedback ([privacy](https://notemods.com/privacy/)). The tab sends no data. Turn the tab off in Settings.
 
-Pause chord input controls the input handler. Default dictionary opens the free dictionary editor. Folder dictionaries shows saved folder sets. Without Pro, its buttons and the file buttons show a Sponsor notice. The GitHub account controls sign in, refresh and sign out.
+Pause chord input controls the input handler. Default dictionary opens the free dictionary editor. Folder dictionaries shows saved folder sets. Without Pro, its buttons and the file buttons show a Sponsor notice.
 
 The window is fixed at 80 ms. There is no delay slider. Name and Note folder apply to a folder dictionary. Remove deletes that folder set. Import changes the draft; Save commits it. Closing the modal without Save leaves the saved data unchanged.
 
@@ -106,6 +106,8 @@ The plugin saves dictionaries and pause state in its vault plugin `data.json`. A
 ## Payment, account and network
 
 The core features are free. Pro features need a GitHub Sponsors sponsorship of theluckystrike: $5 a month or more, or $15 once. A total payment of $15 meets the payment requirement for Pro without further payment. Sign-in and the checks below still apply. Your notes stay readable and editable with or without Pro.
+
+[One payment turns on Pro in every NoteMods plugin](https://notemods.com/pro/).
 
 GitHub handles the payment. Sponsor at https://github.com/sponsors/theluckystrike?frequency=one-time&metadata_source=pocket-letter-chords. You need no account for the free features. Pro needs the GitHub account that sponsors.
 
