@@ -11,7 +11,7 @@ import manifest from '../manifest.json';
 
 // A free user can select Add dictionary, Edit dictionary of a folder dictionary, Import file and Export file, and can
 // save three-letter chords. Each select shows the shared Pro notice with the "Sponsor on GitHub" button. Nothing opens or saves.
-const PITCH = 'Sponsor on GitHub, then sign in from the plugin settings.';
+const PITCH = 'One payment turns on Pro in every NoteMods plugin. Sponsor on GitHub, then sign in from the plugin settings.';
 const FOLDER = 'Folder dictionaries need Pro.';
 const FILES = 'Dictionary files need Pro.';
 const THREE = 'Three-letter chords need Pro.';
