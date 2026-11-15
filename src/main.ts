@@ -33,13 +33,15 @@ export default class PocketLetterChordsPlugin extends Plugin {
   this.tab = new PocketLetterChordsSettingTab(this.app, this);
   this.addSettingTab(this.tab);
   this.register(pro.onChange(() => { this.flushInput(); this.tab?.update(); }));
-  this.registerDomEvent(document, 'keydown', e => this.keyDown(e), true);
-  this.registerDomEvent(document, 'keyup', e => this.keyUp(e), true);
-  this.registerDomEvent(document, 'compositionstart', () => { this.flushInput(); this.composing = true; }, true);
-  this.registerDomEvent(document, 'compositionend', () => { this.composing = false; }, true);
-  this.registerDomEvent(document, 'pointerdown', () => this.flushInput(), true);
-  this.registerDomEvent(document, 'focusout', () => this.flushInput(), true);
-  this.registerDomEvent(document, 'paste', () => this.flushInput(), true);
+  // The main window document, where the workspace lives (same object as the global document).
+  const doc = this.app.workspace.containerEl.doc;
+  this.registerDomEvent(doc, 'keydown', e => this.keyDown(e), true);
+  this.registerDomEvent(doc, 'keyup', e => this.keyUp(e), true);
+  this.registerDomEvent(doc, 'compositionstart', () => { this.flushInput(); this.composing = true; }, true);
+  this.registerDomEvent(doc, 'compositionend', () => { this.composing = false; }, true);
+  this.registerDomEvent(doc, 'pointerdown', () => this.flushInput(), true);
+  this.registerDomEvent(doc, 'focusout', () => this.flushInput(), true);
+  this.registerDomEvent(doc, 'paste', () => this.flushInput(), true);
   this.registerDomEvent(window, 'blur', () => { this.flushInput(); this.composing = false; });
   this.registerEvent(this.app.workspace.on('active-leaf-change', () => this.flushInput()));
   this.registerEvent(this.app.workspace.on('file-open', () => this.flushInput()));
